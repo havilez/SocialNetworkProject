@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+   </head>
+<body ng-app="app">
+
+    <div ng-controller='PostsCtrl' class="container">
+        <h1>Recent Posts</h1>
+        <input ng-model='postBody' class="form-control"/>
+        <button ng-click='addPost()' class="btn btn-default">Add Post</button>
+        <ul class="list-group">
+            <li ng-repeat='post in posts' class="list-group-item">
+                <strong>@{{ post.username }}</strong>
+                <span>{{ post.body }}</span>
+            </li>
+
+        </ul>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script>
+        var myApp = angular.module('app',[ ] );
+
+        // create the PostCtrl controller  module and dependency inject $scope
+        myApp.controller('PostsCtrl', function ($scope) {
+            // starting data
+            $scope.posts = [
+                {
+                    username: 'dickeyxxx',
+                    body: 'Node rules!'
+                },
+                {
+                    username: 'jeffdickey',
+                    body: 'Trying out angular.js ...'
+                }
+            ]
+            $scope.addPost = function () {
+                // only add post if there is a body
+                if($scope.postBody) {
+
+                    $scope.posts.unshift({
+                        username: 'dickeyxxx',
+                        body: $scope.postBody
+                    })
+                }
+
+                $scope.postBody = null;
+            }
+        })
+    </script>
+
+</body>
+</html>
