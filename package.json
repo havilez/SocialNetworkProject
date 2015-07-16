@@ -1,0 +1,28 @@
+{
+  "name": "socialnetworkproject",
+  "version": "1.0.0",
+  "description": "Social Network Project from Write Modern Web Apps book",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/havilez/SocialNetworkProject.git"
+  },
+  "author": "Harold Avilez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/havilez/SocialNetworkProject/issues"
+  },
+  "homepage": "https://github.com/havilez/SocialNetworkProject#readme",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "mongoose": "^4.0.7",
+    "morgan": "^1.6.1",
+    "q": "^1.4.1"
+  }
+}
