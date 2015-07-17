@@ -50,16 +50,31 @@
 
 
             $scope.addPost = function () {
+                // if user input has data
                 if ($scope.postBody ) {
+
+                    // causing mongo db daemon to crash
+                    /***
+                    $http.post('/api/posts', {
+                        username: 'new_dickeyxxx',
+                        body: $scope.postBody
+                    }).success(function (post) {
+                        $scope.posts.unshift(post);
+                        $scope.postBody = null; // clear out gui input data
+
+                    })
+                     ***/
+                    /**
                     $scope.posts.unshift({
                         username: 'dickeyxxx' ,
                         body: $scope.postBody
                     })
+                     **/
                 }
-                $scope.post.body = null;
-            }
 
-        })
+            }  // addPost()  end
+
+        }) /// controller end
     </script>
 
 </body>

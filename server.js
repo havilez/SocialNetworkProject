@@ -55,7 +55,7 @@ app.get('/api/posts', function (request, response, next) {
 
         if(err) {return next(err)};
 
-
+        console.log("DB data= ", posts);
 
         response.json(posts);
     });
