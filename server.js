@@ -46,19 +46,18 @@ app.get('/api/posts', function (request, response, next) {
      **/
 
     // need to make query more specific i.e load records but only with username and post fields
-    var query = Post.findOne({});
+    var query = Post.find({});
     query.select( 'username body' );
 
     query.exec( function (err, posts) {
         console.log("Inside then promise method");
 
+
         if(err) {return next(err)};
 
-        arrayPosts = [];
-        arrayPosts.push( posts );
-        console.log( 'arrayPosts=' ,arrayPosts );
 
-        response.json(arrayPosts);
+
+        response.json(posts);
     });
 
 
