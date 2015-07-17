@@ -10,16 +10,55 @@ var app  = express();
 
 app.use(bodyParser.json());
 
-app.use(logger('dev'))
+//app.use(logger('dev'));
 
-app.get('/api/posts', function (request, response,next) {
-    console.log("GET request received");
+app.use(express.static(__dirname + '/layouts'));
 
-    Post.find().then(function (err, posts) {
+// bootstapping application - by serving up html
+app.get("/", function (request,response) {
+    console.log("GET recieved for / ");
+
+    // works when using static data in angular code
+    // problem seems to be when angular code makes http request to db
+  response.sendfile('layouts/posts.html');
+
+/***
+    response.sendFile('layouts/posts.html').then(function (err, success) {
+        if (err ) { return next(err) }
+        console.log(success);
+    })
+
+ ***/
+
+});
+
+app.get('/api/posts', function (request, response, next) {
+    console.log("GET request received for /api/posts");
+
+    /**
+    response.json([
+        {
+            username: 'static dickeyxxx',
+            body: 'Node Rules!!!!'
+        }
+    ]);
+
+     **/
+
+    // need to make query more specific i.e load records but only with username and post fields
+
+    Post.findOne().then(function (err, posts) {
+        console.log("Inside then promise method");
+
         if(err) {return next(err)};
 
-        response.json(posts);
+        arrayPosts = [];
+        arrayPosts = posts.toJSON();
+        console.log( 'arrayPosts=' ,arrayPosts );
+
+       response.json(arrayPosts);
     });
+
 });
 
 app.post('/api/posts', function (request, response) {
@@ -41,25 +80,7 @@ app.post('/api/posts', function (request, response) {
         response.sendStatus(201).send(post);
     }, function ( err ) {
             console.log(err);
-        });
-
-    /**
-    post.save(function (err,post) {
-        if (err) { return next(err) }
-        response.sendStatus(201).send(post);
-    })
-
-     **/
-
-
-
-/***
-    console.log('post received!');
-    console.log(request.body.username);
-    console.log(request.body.body);
-    response.sendStatus(201);
- ***/
-
+    });
 
 
 });

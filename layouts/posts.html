@@ -23,30 +23,41 @@
         var myApp = angular.module('app',[ ] );
 
         // create the PostCtrl controller  module and dependency inject $scope
-        myApp.controller('PostsCtrl', function ($scope) {
-            // starting data
-            $scope.posts = [
-                {
-                    username: 'dickeyxxx',
-                    body: 'Node rules!'
-                },
-                {
-                    username: 'jeffdickey',
-                    body: 'Trying out angular.js ...'
-                }
-            ]
-            $scope.addPost = function () {
-                // only add post if there is a body
-                if($scope.postBody) {
+        myApp.controller('PostsCtrl', function ($scope, $http) {
 
+            // retrieve posts data from db upon this file being loaded via "/" route on server
+
+            $http.get('http://localhost:3030/api/posts').success(function(posts) {
+                console.log("Received posts:");
+                console.log(posts);
+                $scope.posts = posts;
+            }, function ( error ) {
+                console.log("error");
+            });
+
+
+
+
+
+/***
+          $scope.posts = [
+              {
+                  username: 'static dickeyxxx',
+                  body: 'Node Rules!!!!'
+              }
+          ]
+ ***/
+
+            $scope.addPost = function () {
+                if ($scope.postBody ) {
                     $scope.posts.unshift({
-                        username: 'dickeyxxx',
+                        username: 'dickeyxxx' ,
                         body: $scope.postBody
                     })
                 }
-
                 $scope.postBody = null;
             }
+
         })
     </script>
 
