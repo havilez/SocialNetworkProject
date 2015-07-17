@@ -42,6 +42,7 @@
 
           $scope.posts = [
               {
+                  _id : "",
                   username: 'static dickeyxxx',
                   body: 'Node Rules!!!!'
               }
@@ -55,7 +56,7 @@
                         body: $scope.postBody
                     })
                 }
-                $scope.postBody = null;
+                $scope.post.body = null;
             }
 
         })

@@ -10,7 +10,7 @@ var app  = express();
 
 app.use(bodyParser.json());
 
-//app.use(logger('dev'));
+app.use(logger('dev'));
 
 app.use(express.static(__dirname + '/layouts'));
 
@@ -55,7 +55,7 @@ app.get('/api/posts', function (request, response, next) {
         if(err) {return next(err)};
 
         arrayPosts = [];
-        arrayPosts = posts.toJSON();
+        arrayPosts.push( posts );
         console.log( 'arrayPosts=' ,arrayPosts );
 
         response.json(arrayPosts);
