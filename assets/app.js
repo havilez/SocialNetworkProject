@@ -12,7 +12,6 @@ app.service("PostsSvc", function ($http) {
 app.controller('PostsCtrl', function ($scope, PostsSvc) {
 
     // retrieve posts data from db upon this file being loaded via "/" route on server
-
     $scope.posts = [
         {
             _id : "",
@@ -58,6 +57,7 @@ app.controller('PostsCtrl', function ($scope, PostsSvc) {
 
     };  // addPost()  end
 
+    //when is this called??????
     PostsSvc.fetch().success(function(posts) {
         console.log("Received posts:");
         console.log(posts);

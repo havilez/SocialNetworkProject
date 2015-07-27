@@ -43,14 +43,30 @@ router.post('/', function (request, response, next) {
     });
 
     console.log("Mongoose Post object created");
+/**
+    post.save(function (err,result) {
+        if ( err ) {
+            console.log(err);
+            return next(err);
+        }
+        console.log("result = ",result);
+        // response.sendStatus(201).json(result);
+        response.json(result);
+    });
+ **/
+
 
     post.save().then(function (result) {
         console.log("result = ",result);
-        response.sendStatus(201).json(result);
+        // response.sendStatus(201).json(result);
+        response.json(result);
     }, function ( err ) {
         console.log(err);
         return next(err);
     });
+
+
+
 
 });
 

@@ -2,6 +2,8 @@
 var express = require('express');
 var router = require('express').Router();
 
+
+// enable serving up of static assets ?????
 // front end javaScript
 router.use(express.static(__dirname + '/../assets'));
 
