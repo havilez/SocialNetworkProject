@@ -5,6 +5,9 @@ var logger = require('morgan');
 
 var app  = express();
 
+app.locals.pretty = true;
+app.set("view engine", "jade");
+
 app.use(bodyParser.json());
 
 app.use(logger('dev'));

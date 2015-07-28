@@ -14,7 +14,8 @@ router.use(express.static(__dirname + '/layouts'));
 router.get("/", function (request,response) {
     console.log("GET recieved for / ");
 
-    response.sendfile('layouts/posts.html');
+   // response.sendfile('layouts/posts.html');
+    response.render("posts");
 
     /***
      response.sendFile('layouts/posts.html').then(function (err, success) {

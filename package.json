@@ -24,5 +24,8 @@
     "mongoose": "^4.0.7",
     "morgan": "^1.6.1",
     "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "jade": "^1.11.0"
   }
 }
