@@ -1,20 +1,20 @@
 extends layout
 
 block content
-    body(ng-app="app")
-        div.container(ng-controller='PostsCtrl')
-          h1 Recent Posts
-          form(role=form)
-             div.form-group
-                div.input-group
-                    input.form-control(ng-model='postBody')
-                    span.input-group-btn
-                        button.btn.btn-default(ng-click='addPost()') Add Post
+	body(ng-app="app")
+		div.container(ng-controller='PostsCtrl')
+			h1 Recent Posts
+			form(role=form)
+				div.form-group
+					div.input-group
+						input.form-control(ng-model='postBody')
+						span.input-group-btn
+							button.btn.btn-default(ng-click='addPost()') Add New Post
 
-          ul.list-group
-              li.list-group-item(ng-repeat="post in posts" )
-                strong @{{ post.username }}
-                span {{ post.body }}
+			ul.list-group
+				li.list-group-item(ng-repeat="post in posts" )
+					strong @{{ post.username }}
+					span {{ post.body }}
 
 
 

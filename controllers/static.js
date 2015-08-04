@@ -5,6 +5,8 @@ var router = require('express').Router();
 
 // enable serving up of static assets ?????
 // front end javaScript
+router.use(express.static(__dirname + '/../public'));
+
 router.use(express.static(__dirname + '/../assets'));
 
 // front end html -- try to change this to jade
