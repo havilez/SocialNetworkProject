@@ -52,6 +52,23 @@ describe('controllers.api.posts', function () {
                 .end(done)
         });
     });
+    
+    describe('POST /api/posts', function () {
+
+        beforeEach(function (done) {
+            api.post('/api/posts')
+                .send({ body: 'this is my new post'})  // bug  post body does not match mongoose  criteria
+                .expect(201)
+                .end(done)
+        });
+
+        it('added 1 new post', function (done) {
+            Post.findOne(function (err, post) {
+                expect(post.body).to.equal('this is my new post')
+                done(err)
+            })
+        })
+    })
 
 });
 
