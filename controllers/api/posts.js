@@ -59,7 +59,7 @@ router.post('/', function (request, response, next) {
     post.save().then(function (result) {
         console.log("result = ",result);
         // response.sendStatus(201).json(result);
-        response.json(result);
+        response.status(201).json(result);
     }, function ( err ) {
         console.log(err);
         return next(err);

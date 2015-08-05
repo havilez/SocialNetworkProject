@@ -57,7 +57,9 @@ describe('controllers.api.posts', function () {
 
         beforeEach(function (done) {
             api.post('/api/posts')
-                .send({ body: 'this is my new post'})  // bug  post body does not match mongoose  criteria
+                .send({ body: 'this is my new post',
+                        username: 'dickeyxxx'
+                })
                 .expect(201)
                 .end(done)
         });
